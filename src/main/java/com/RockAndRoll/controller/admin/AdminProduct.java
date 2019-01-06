@@ -10,11 +10,20 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 
 @Controller
 @RequestMapping("/admin")
 public class AdminProduct {
+
+    private Path path;
 
     @Autowired
     private ProductService productService;
@@ -34,10 +43,29 @@ public class AdminProduct {
     }
 
     @RequestMapping(value = "/product/addProduct", method = RequestMethod.POST)
-    public String addProductPost(@Valid @ModelAttribute("product") Product product, BindingResult result){
+    public String addProductPost(@Valid @ModelAttribute("product") Product product, HttpServletRequest request, BindingResult result){
         if(result.hasErrors()){
             return "addProduct";
         }
+
+
+        MultipartFile productImage = product.getProductImage();
+        String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+        path = Paths.get(rootDirectory + "\\WEB-INF\\resources\\images" + product.getId() + ".png");
+
+
+        if(productImage != null && !productImage.isEmpty()){
+            System.out.println("-------------------------------------------------------------------------------1");
+            try {
+                productImage.transferTo(new File(path.toString()));
+                System.out.println("-------------------------------------------------------------------------------1.1");
+            }catch(Exception e){
+                System.out.println("-------------------------------------------------------------------------------2.");
+                e.printStackTrace();
+                throw new RuntimeException("product image save failed", e);
+            }
+        }
+
         productService.addProduct(product);
 
         return "redirect:/admin/productInventory";

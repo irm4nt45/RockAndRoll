@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="RockAndRoll:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/RockAndRoll_war_exploded</output-path>
+    <output-path>$PROJECT_DIR$/scr/main/webapp</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="RockAndRoll/web/Web" />
       <element id="directory" name="WEB-INF">
@@ -72,6 +72,8 @@
           <element id="library" level="project" name="Maven: org.springframework.webflow:spring-webflow:2.3.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.webflow:spring-binding:2.5.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.webflow:spring-webflow:2.5.1.RELEASE" />
+          <element id="library" level="project" name="Maven: commons-fileupload:commons-fileupload:1.4" />
+          <element id="library" level="project" name="Maven: commons-io:commons-io:2.6" />
         </element>
       </element>
     </root>

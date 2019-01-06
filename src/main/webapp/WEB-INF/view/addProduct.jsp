@@ -16,7 +16,7 @@
             <p class="lead">Add new products that just arrived!</p>
         </div>
         <form:form action="${pageContext.request.contextPath}/admin/product/addProduct"
-                   method="post" commandName="product"  >
+                   method="post" commandName="product" enctype="multipart/form-data" >
 
 
             <form:hidden path="id" />
@@ -73,13 +73,17 @@
             </label>
         </div>
         <div class="form-group">
-            <label for="name">Unit in stock</label>
+            <label for="untitInStock">Unit in stock</label>
             <form:errors path="unitInStock" cssStyle="color: red"/>
             <form:input path="unitInStock" id="untitInStock" class="form-Control" />
         </div>
         <div class="form-group">
-            <label for="name">Manufacturer</label>
+            <label for="manufacturer">Manufacturer</label>
             <form:input path="productManufacturer" id="manufacturer" class="form-Control" />
+        </div>
+        <div class="from-group">
+            <label class="custom-control-label" for="productImage">Upload picture</label>
+            <form:input path="productImage" id="productImage" type="file" class="form:input-large"/>
         </div>
         <br>
         <br>
