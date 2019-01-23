@@ -3,7 +3,7 @@
 eShop
 
 Back end: Java 
-Frameworks: Spring MVC, Spring Security, Spring Flow, Hibernate
+Frameworks: Spring MVC, Spring Security, Spring Flow, Hibernate, Persistance, Servlet API
 Database: MySQL
-Front end: bootstrap, html, css, Angular, jQuery
+Front end: Bootstrap, html, css, Angular, jQuery
 IDE: IntelliJ
